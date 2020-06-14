@@ -1,7 +1,7 @@
 from django.db.models import F
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
-from django.template import loader
+# from django.template import loader
 from django.urls import reverse
 from django.views import generic
 
@@ -18,12 +18,12 @@ class IndexView(generic.ListView):
 
 class DetailView(generic.DetailView):
     model = Question
-    template_name = 'polls/detail.html'
+    # template_name = 'polls/Question_detail.html'
 
 
 class ResultsView(generic.DetailView):
     model = Question
-    template_name = 'polls/results.html'
+    template_name = 'polls/Question_results.html'
 
 
 def vote(request, question_id):
@@ -31,7 +31,7 @@ def vote(request, question_id):
     try:
         selected_choice = question.choice_set.get(pk=request.POST['choice'])
     except (KeyError, Choice.DoesNotExist):
-        return render(request, 'polls/detail.html', {
+        return render(request, 'polls/Question_detail.html', {
             'question': question,
             'error_message': "You didn't select a choice."
         })
@@ -57,9 +57,9 @@ def vote(request, question_id):
 #     # except Question.DoesNotExist:
 #     #     raise Http404("Question does not exist.")
 #     question = get_object_or_404(Question, pk=question_id)
-#     return render(request, 'polls/detail.html', {'question': question})
+#     return render(request, 'polls/Question_detail.html', {'question': question})
 #
 #
 # def results(request, question_id):
 #     question = get_object_or_404(Question, pk=question_id)
-#     return render(request, 'polls/results.html', {'question': question})
+#     return render(request, 'polls/Question_results.html', {'question': question})
