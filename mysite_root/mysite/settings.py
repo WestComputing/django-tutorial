@@ -35,7 +35,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'polls.apps.PollsConfig'
+    'polls.apps.PollsConfig',
+    # 'polls'
 ]
 
 MIDDLEWARE = [
@@ -117,7 +118,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+# STATIC_ROOT = ''
+# STATICFILES_DIRS = (os.path.join('static'),)
 
 # testing
-
-TEST_RUNNER = "redgreenunittest.django.runner.RedGreenDiscoverRunner"
+if DEBUG:
+    TEST_RUNNER = "redgreenunittest.django.runner.RedGreenDiscoverRunner"
