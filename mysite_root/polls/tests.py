@@ -78,7 +78,6 @@ class QuestionDetailViewTests(TestCase):
         self.assertContains(response, past_question.question_text)
 
 
-
 class QuestionResultsViewTests(TestCase):
     def test_future_question(self):
         future_question = create_question(question_text='Future question', days_from_now=1)
@@ -91,4 +90,3 @@ class QuestionResultsViewTests(TestCase):
         url = reverse('polls:results', args=(past_question.id,))
         response = self.client.get(url)
         self.assertContains(response, past_question.question_text)
-
